@@ -1,10 +1,18 @@
 'use strict';
 angular.module('ui')
-    .controller('DogListCtrl', function ($http) {
+    .controller('DogListCtrl', function ($http, dogService) {
       var self = this;
 
-      $http.get('http://localhost:4000/dogs').then(function(response) {
-        self.dogs = response.data;
+      dogService.getDogs().then(function(data) {
+        self.dogs = data;
       });
+
+      self.remove = function(dog) {
+        dogService.remove(dog).then(function() {
+          dogService.getDogs().then(function (data) {
+            self.dogs = data;
+          });
+        });
+      }
 
     });
