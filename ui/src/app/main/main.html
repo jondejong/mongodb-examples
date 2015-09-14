@@ -1,0 +1,30 @@
+<div layout="vertical">
+
+  <md-content layout-fill>
+    <header>
+      <md-toolbar layout="row" layout-align="center center">
+
+        <section flex layout="row" layout-align="left center">
+          <md-button href="#/home/dogs">Dogs <span class="fa fa-list"></span> </md-button>
+          <md-button href="#/home/new">New Dog <span class="fa fa-plus"></span> </md-button>
+        </section>
+
+        <md-button href="http://www.objectpartners.com">Object Partners, Inc</md-button>
+
+      </md-toolbar>
+    </header>
+
+    <section layout-fill>
+      <h1>Doggies!</h1>
+      <md-divider/>
+    </section>
+
+    <ui-view></ui-view>
+    <footer>
+      <md-toolbar layout="row" layout-align="center center">
+        <p>Tweet me: <a href="https://twitter.com/jondejong">@jondejong</a></p>
+      </md-toolbar>
+    </footer>
+  </md-content>
+
+</div>
