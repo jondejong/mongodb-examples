@@ -23,6 +23,11 @@
           templateUrl: 'app/components/add-dog/add-dog.html',
           controller: 'AddDogCtrl',
           controllerAs: 'addDogCtrl'
+        }).state('home.edit', {
+          url: '/edit/:id',
+          templateUrl: 'app/components/edit-dog/edit-dog.html',
+          controller: 'EditDogCtrl',
+          controllerAs: 'editDogCtrl'
         });
 
     $urlRouterProvider.otherwise('/home/dogs');
