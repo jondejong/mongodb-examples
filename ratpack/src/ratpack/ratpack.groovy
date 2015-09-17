@@ -16,6 +16,7 @@ ratpack {
             response.headers.add 'Access-Control-Allow-Origin', '*'
             response.headers.add 'Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'
             response.headers.add 'Access-Control-Allow-Headers', 'Content-Type,X-Requested-With'
+            next()
         }
         get {
             render 'Hello World'
