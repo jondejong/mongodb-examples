@@ -57,7 +57,6 @@ class DogRepository implements Service {
 
     def update(dog) {
         Blocking.get {
-            def document = DocumentConverter.convert(dog)
             database.dogs.update(['_id': dog.id], [$set: DocumentConverter.convert(dog)])
         }
     }
