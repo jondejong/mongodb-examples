@@ -1,3 +1,4 @@
 # mongodb-examples
 
-For my talk at the Minneapolis MongoDB user group on Sept 22, 2015
+A collection of applications built on different frameworks using MongoDB as a datastore
+
