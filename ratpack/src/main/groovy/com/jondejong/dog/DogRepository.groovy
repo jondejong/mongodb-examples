@@ -44,7 +44,8 @@ class DogRepository implements Service {
 
     def saveDog(dog) {
         Blocking.get {
-            database.dogs.insert(dog)
+            database.dogs << dog.properties.findAll { !['class', 'metaClass'].contains(it.key) }
+
         }
     }
 }

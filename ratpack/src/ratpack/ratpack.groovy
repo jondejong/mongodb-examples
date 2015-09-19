@@ -1,11 +1,11 @@
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.jondejong.dog.Dog
 import com.jondejong.dog.DogRepository
 import com.jondejong.jackson.ObjectIdObjectMapper
 import org.bson.types.ObjectId
 
 import static ratpack.groovy.Groovy.ratpack
 import static ratpack.jackson.Jackson.json
-import static ratpack.jackson.Jackson.jsonNode
 
 ratpack {
     bindings {
@@ -29,18 +29,13 @@ ratpack {
                     }
                 }
                 post {
-                    parse(jsonNode()).
+                    parse(Dog).
                             then {dog ->
-                                println "I think I parsed a dog ${dog}"
-                                render json(dog)
-//                                flatMap { input ->
-//                                    render json(input)
-//                                }
+                                dogRepository.saveDog(dog).then () {
+                                    def message = "${dog.name} has been saved."
+                                    render json([message: message.toString()])
+                                }
                             }
-
-
-
-//                    def body = fromJson(Map, request.body.te)
                 }
             }
 
