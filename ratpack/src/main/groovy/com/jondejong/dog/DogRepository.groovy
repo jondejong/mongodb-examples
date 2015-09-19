@@ -48,4 +48,10 @@ class DogRepository implements Service {
 
         }
     }
+
+    def delete(id) {
+        Blocking.get {
+            database.dogs.remove([_id: id])
+        }
+    }
 }
