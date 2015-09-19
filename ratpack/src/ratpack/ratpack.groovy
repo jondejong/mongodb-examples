@@ -27,7 +27,7 @@ ratpack {
             ])
         }
 
-        path('dogs') {DogRepository dogRepository ->
+        path('dogs') { DogRepository dogRepository ->
             byMethod {
                 get {
                     dogRepository.getDogs().then { dogs ->
@@ -35,13 +35,12 @@ ratpack {
                     }
                 }
                 post {
-                    parse(Dog).
-                            then {dog ->
-                                dogRepository.saveDog(dog).then () {
-                                    def message = "${dog.name} has been saved."
-                                    render json([message: message.toString()])
-                                }
-                            }
+                    parse(Dog).then { dog ->
+                        dogRepository.saveDog(dog).then() {
+                            def message = "${dog.name} has been saved."
+                            render json([message: message.toString()])
+                        }
+                    }
                 }
             }
 
@@ -58,6 +57,15 @@ ratpack {
                 delete {
                     dogRepository.delete(id).then {
                         render json([message: 'Dog has been deleted'])
+                    }
+                }
+                put {
+                    parse(Dog).then { dog ->
+                        dog.id = id
+                        dogRepository.update(dog).then {
+                            def message = "${dog.name} has been updated."
+                            render json([message: message.toString()])
+                        }
                     }
                 }
             }

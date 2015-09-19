@@ -1,10 +1,12 @@
 package com.jondejong.dog
 
-import com.sun.corba.se.spi.ior.ObjectId
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import org.bson.types.ObjectId
 
 /**
  * Created by jondejong on 9/19/15.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 class Dog {
     ObjectId id
     String name
@@ -13,6 +15,6 @@ class Dog {
 
     @Override
     String toString() {
-        return "${name}. ${age} year old ${breed}."
+        "${name}. ${age} year old ${breed}."
     }
 }

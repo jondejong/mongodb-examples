@@ -2,6 +2,7 @@ package com.jondejong.dog
 
 import com.gmongo.GMongo
 import com.google.inject.Singleton
+import com.jondejong.mongo.DocumentConverter
 import ratpack.exec.Blocking
 import ratpack.server.Service
 import ratpack.server.StartEvent
@@ -44,14 +45,20 @@ class DogRepository implements Service {
 
     def saveDog(dog) {
         Blocking.get {
-            database.dogs << dog.properties.findAll { !['class', 'metaClass'].contains(it.key) }
-
+            database.dogs << DocumentConverter.convert(dog)
         }
     }
 
     def delete(id) {
         Blocking.get {
             database.dogs.remove([_id: id])
+        }
+    }
+
+    def update(dog) {
+        Blocking.get {
+            def document = DocumentConverter.convert(dog)
+            database.dogs.update(['_id': dog.id], [$set: DocumentConverter.convert(dog)])
         }
     }
 }
