@@ -1,4 +1,4 @@
-package com.objectpartners.jackson
+package com.jondejong.jackson
 
 import com.fasterxml.jackson.core.JsonGenerator
 import com.fasterxml.jackson.databind.JsonSerializer

@@ -1,4 +1,4 @@
-package com.objectpartners.dog
+package com.jondejong.dog
 
 import com.gmongo.GMongo
 import com.google.inject.Singleton
@@ -31,9 +31,20 @@ class DogRepository implements Service {
     }
 
     def getDogs() {
-        Blocking.get({
+        Blocking.get {
             database.dogs.find().asList()
-        })
+        }
+    }
 
+    def getDog(id) {
+        Blocking.get {
+            database.dogs.findOne([_id: id])
+        }
+    }
+
+    def saveDog(dog) {
+        Blocking.get {
+            database.dogs.insert(dog)
+        }
     }
 }
