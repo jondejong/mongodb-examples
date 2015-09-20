@@ -10,9 +10,9 @@ import org.bson.types.ObjectId
 class ObjectIdObjectMapper extends ObjectMapper {
 
     public ObjectIdObjectMapper() {
-        SimpleModule module = new SimpleModule("ObjectIdModule");
-        module.addSerializer(ObjectId.class, new ObjectIdSerializer());
-        this.registerModule(module);
+        SimpleModule module = new SimpleModule("ObjectIdModule")
+        module.addSerializer(ObjectId.class, new ObjectIdSerializer())
+        this.registerModule(module)
     }
 
 }

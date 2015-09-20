@@ -12,6 +12,6 @@ class ObjectIdSerializer extends JsonSerializer<ObjectId> {
 
     @Override
     public void serialize(ObjectId value, JsonGenerator jgen, SerializerProvider provider) {
-        jgen.writeString(value.toString());
+        jgen.writeString(value.toString())
     }
 }
