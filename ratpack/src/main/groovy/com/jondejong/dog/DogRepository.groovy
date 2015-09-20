@@ -33,13 +33,23 @@ class DogRepository implements Service {
 
     def getDogs() {
         Blocking.get {
-            database.dogs.find().asList()
+            def dogs = []
+            def results = database.dogs.find().asList()
+            results.each {dog->
+                dog.id = dog._id
+                dog.remove('_id')
+                dogs << dog
+            }
+            return dogs
         }
     }
 
     def getDog(id) {
         Blocking.get {
-            database.dogs.findOne([_id: id])
+            def dog = database.dogs.findOne([_id: id])
+            dog.id = dog._id
+            dog.remove('_id')
+            dog
         }
     }
 

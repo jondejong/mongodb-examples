@@ -15,8 +15,9 @@
   "bugs": {},
   "homepage": "https://github.com/jondejong/mean-talk",
   "dependencies": {
-    "body-parser": "^1.12.2",
+    "body-parser": "1.12.2",
     "express": "4.9.4",
-    "mongoose": "^4.0.4"
+    "lodash": "3.10.1",
+    "mongoose": "4.0.4"
   }
 }

@@ -12,7 +12,7 @@ angular
         },
 
         remove: function(dog) {
-          return $http.delete('http://localhost:4000/dogs/' + dog._id, dog).then(function (response) {
+          return $http.delete('http://localhost:4000/dogs/' + dog.id, dog).then(function (response) {
             return response.data;
           });
         },
@@ -24,7 +24,7 @@ angular
         },
 
         update: function(dog) {
-          return $http.put('http://localhost:4000/dogs/' + dog._id, dog).then(function(response) {
+          return $http.put('http://localhost:4000/dogs/' + dog.id, dog).then(function(response) {
             return response.data;
           });
         },

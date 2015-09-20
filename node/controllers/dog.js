@@ -1,9 +1,22 @@
 var dogController = {};
 var Dog = require('../models/dog');
+var _ = require('lodash')
+
+function cleanIds(data) {
+  var dog = data.toObject();
+  dog.id = dog._id
+  dog._id = undefined;
+  return dog;
+}
 
 dogController.list = function(req, res) {
   Dog.find(req.query, function(err, list){
-    res.json(list);
+    var i = 0;
+    var dogs = _.collect(list, function(data) {
+      return cleanIds(data)
+    });
+
+    res.json(dogs);
   });
 
 };
@@ -50,8 +63,8 @@ dogController.save = function(req, res) {
 };
 
 dogController.get = function(req, res) {
-  Dog.findById(req.params.id, function(err, dog){
-    res.json(dog);
+  Dog.findById(req.params.id, function(err, data){
+    res.json(cleanIds(data));
   });
 };
 
