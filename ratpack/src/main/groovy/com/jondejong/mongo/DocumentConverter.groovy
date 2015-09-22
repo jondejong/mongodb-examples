@@ -8,7 +8,7 @@ import org.bson.types.ObjectId
 class DocumentConverter<T> {
 
     static def convert(Object object) {
-        object.properties.findAll { !['class', 'metaClass', 'id'].contains(it.key) }
+        object.properties.findAll { !['class', 'metaClass'].contains(it.key) }
     }
 
 }
