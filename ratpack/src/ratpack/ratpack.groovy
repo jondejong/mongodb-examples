@@ -36,7 +36,7 @@ ratpack {
                 }
                 post {
                     parse(Dog).then { dog ->
-                        dogRepository.saveDog(dog).then() {
+                        dogRepository.saveDog(dog).then {
                             def message = "${dog.name} has been saved."
                             render json([message: message.toString()])
                         }
