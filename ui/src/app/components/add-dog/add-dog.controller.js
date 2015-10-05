@@ -10,5 +10,9 @@ angular.module('ui')
         dogService.save(self.dog).then(function() {
           $state.go('home.dogs');
         });
-      }
+      };
+
+      self.cancel = function() {
+        $state.go('home.dogs');
+      };
     });
